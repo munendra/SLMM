@@ -9,17 +9,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParcelVision.SLMM.Logic.Tes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParcelVision.SLMM.API", "ParcelVision.SLMM.API\ParcelVision.SLMM.API.csproj", "{4708FBD2-4FCE-449A-AC19-21E7F79AC946}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelVision.SLMM.Model", "ParcelVision.SLMM.Model\ParcelVision.SLMM.Model.csproj", "{6E15F909-41D5-481E-9719-2FFE8B61A242}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParcelVision.SLMM.Model", "ParcelVision.SLMM.Model\ParcelVision.SLMM.Model.csproj", "{6E15F909-41D5-481E-9719-2FFE8B61A242}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParcelVision.SLMM.Constants", "ParcelVision.SLMM.Constants\ParcelVision.SLMM.Constants.csproj", "{214BDE40-019C-4263-A428-BC099B7A9CE2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParcelVision.SLMM.Dtos", "ParcelVision.SLMM.Dtos\ParcelVision.SLMM.Dtos.csproj", "{8AC9FE49-A666-4F8F-85C6-1347D302636F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParcelVision.SLMM.Service", "ParcelVision.SLMM.Service\ParcelVision.SLMM.Service.csproj", "{E3495A8D-2301-4AF6-B495-09799C67DB7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParcelVision.SLMM.Service", "ParcelVision.SLMM.Service\ParcelVision.SLMM.Service.csproj", "{E3495A8D-2301-4AF6-B495-09799C67DB7C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D055BE94-EA4E-47B3-9DB6-B8A151CF2292}"
 	ProjectSection(SolutionItems) = preProject
-		ShortDescription.txt = ShortDescription.txt
+		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
 Global
