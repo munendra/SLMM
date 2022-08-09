@@ -1,6 +1,7 @@
 ﻿using ParcelVision.SLMM.Constants;
 using ParcelVision.SLMM.Model;
 using System;
+using System.Threading.Tasks;
 
 namespace ParcelVision.SLMM.Logic
 {
@@ -14,13 +15,13 @@ namespace ParcelVision.SLMM.Logic
         }
 
 
-        public MowingMachine Task(Actions action, MowingMachine mowingMachine, int width, int length)
+        public async Task<MowingMachine> Task(Actions action, MowingMachine mowingMachine, int width, int length)
         {
             var lawn = GetLownOrientation(width, length);
-            var isValid = _mowingMachineLogic.Validation(action, mowingMachine, lawn);
+            var isValid = await _mowingMachineLogic.Validation(action, mowingMachine, lawn);
             if (isValid)
             {
-              return _mowingMachineLogic.Operates(action, mowingMachine);
+                return await _mowingMachineLogic.Operates(action, mowingMachine);
             }
             return mowingMachine;
         }

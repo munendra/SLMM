@@ -1,5 +1,6 @@
 ﻿using ParcelVision.SLMM.Dtos;
 using ParcelVision.SLMM.Logic;
+using System.Threading.Tasks;
 
 namespace ParcelVision.SLMM.Service
 {
@@ -10,9 +11,9 @@ namespace ParcelVision.SLMM.Service
         {
             _lawnLogic = lawnLogic;
         }
-        public LawnRequestDto Task(LawnRequestDto lawnRequest)
+        public async Task<LawnRequestDto> Task(LawnRequestDto lawnRequest)
         {
-            var updateMowingMachine = _lawnLogic.Task(lawnRequest.Actions, lawnRequest.MowingMachine, lawnRequest.Lawn.Width, lawnRequest.Lawn.Length);
+            var updateMowingMachine = await _lawnLogic.Task(lawnRequest.Actions, lawnRequest.MowingMachine, lawnRequest.Lawn.Width, lawnRequest.Lawn.Length);
             lawnRequest.MowingMachine = updateMowingMachine;
             return lawnRequest;
         }

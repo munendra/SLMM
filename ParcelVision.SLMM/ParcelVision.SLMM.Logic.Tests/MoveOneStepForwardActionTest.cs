@@ -1,5 +1,6 @@
 ﻿using ParcelVision.SLMM.Constants;
 using ParcelVision.SLMM.Model;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace ParcelVision.SLMM.Logic.Tests
@@ -15,7 +16,7 @@ namespace ParcelVision.SLMM.Logic.Tests
         }
 
         [Fact]
-        public void MoveOneStepForwardAction_Do_ShouldMoveOneStepTowardsNorth()
+        public async Task MoveOneStepForwardAction_Do_ShouldMoveOneStepTowardsNorth()
         {
             var mowingMachine = new MowingMachine()
             {
@@ -26,12 +27,12 @@ namespace ParcelVision.SLMM.Logic.Tests
                     Y = 6
                 }
             };
-            var newMowingMachinePosition = _moveOneStepForwardAction.Do(mowingMachine);
+            var newMowingMachinePosition = await _moveOneStepForwardAction.Do(mowingMachine);
             Assert.Equal(4, newMowingMachinePosition.Position.X);
         }
 
         [Fact]
-        public void MoveOneStepForwardAction_Do_ShouldMoveOneStepTowardsWest()
+        public async Task MoveOneStepForwardAction_Do_ShouldMoveOneStepTowardsWest()
         {
             var mowingMachine = new MowingMachine()
             {
@@ -42,7 +43,7 @@ namespace ParcelVision.SLMM.Logic.Tests
                     Y = 6
                 }
             };
-            var newMowingMachinePosition = _moveOneStepForwardAction.Do(mowingMachine);
+            var newMowingMachinePosition = await _moveOneStepForwardAction.Do(mowingMachine);
             Assert.Equal(5, newMowingMachinePosition.Position.Y);
         }
     }

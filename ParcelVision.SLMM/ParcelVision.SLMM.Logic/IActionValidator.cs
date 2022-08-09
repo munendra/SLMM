@@ -1,5 +1,6 @@
 ﻿using ParcelVision.SLMM.Constants;
 using ParcelVision.SLMM.Model;
+using System.Threading.Tasks;
 
 namespace ParcelVision.SLMM.Logic
 {
@@ -7,6 +8,6 @@ namespace ParcelVision.SLMM.Logic
     {
         Actions Actions { get; }
 
-        bool IsActionValid(MowingMachine mowingMachine,Lawn lawn);
+        Task<bool> IsActionValid(MowingMachine mowingMachine,Lawn lawn);
     }
 }

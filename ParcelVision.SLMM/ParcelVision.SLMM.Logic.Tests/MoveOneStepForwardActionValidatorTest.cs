@@ -1,6 +1,7 @@
 ﻿using ParcelVision.SLMM.Constants;
 using ParcelVision.SLMM.Model;
 using System;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace ParcelVision.SLMM.Logic.Tests
@@ -15,7 +16,7 @@ namespace ParcelVision.SLMM.Logic.Tests
 
 
         [Fact]
-        public void MoveOneStepForwardActionValidator_IsActionValid_ShouldThrowExceptionIfMachineMovementOutSideOfLawn()
+        public async Task MoveOneStepForwardActionValidator_IsActionValid_ShouldThrowExceptionIfMachineMovementOutSideOfLawn()
         {
             var lawn = new Lawn();
             lawn.Orientation.Add(Direction.North, new Axis() { X = 0, Y = 0 });
@@ -26,12 +27,12 @@ namespace ParcelVision.SLMM.Logic.Tests
                 MoveTo = Constants.Direction.North,
                 Position = new Axis() { X = 0, Y = 0 }
             };
-            Assert.Throws<Exception>(() => _moveOneStepForwardActionValidator.IsActionValid(mowingMaching, lawn));
+           await Assert.ThrowsAsync<Exception>(() => _moveOneStepForwardActionValidator.IsActionValid(mowingMaching, lawn));
         }
 
 
         [Fact]
-        public void MoveOneStepForwardActionValidator_IsActionValid_ShouldReturnTrueIfMachineMovementInSideLawn()
+        public async Task MoveOneStepForwardActionValidator_IsActionValid_ShouldReturnTrueIfMachineMovementInSideLawn()
         {
             var lawn = new Lawn();
             lawn.Orientation.Add(Direction.North, new Axis() { X = 0, Y = 10 });
@@ -42,7 +43,8 @@ namespace ParcelVision.SLMM.Logic.Tests
                 MoveTo = Constants.Direction.East,
                 Position = new Axis() { X = 5, Y = 6 }
             };
-            Assert.True(_moveOneStepForwardActionValidator.IsActionValid(mowingMaching, lawn));
+            var isTrue = await _moveOneStepForwardActionValidator.IsActionValid(mowingMaching, lawn);
+            Assert.True(isTrue);
         }
     }
 }

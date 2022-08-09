@@ -1,5 +1,6 @@
 ﻿using ParcelVision.SLMM.Constants;
 using ParcelVision.SLMM.Model;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace ParcelVision.SLMM.Logic.Tests
@@ -15,20 +16,20 @@ namespace ParcelVision.SLMM.Logic.Tests
         }
 
         [Fact]
-        public void MowingMachineLogic_Rotate_ShouldRoteTheMachineClockwise90()
+        public async Task MowingMachineLogic_Rotate_ShouldRoteTheMachineClockwise90()
         {
             var initMowingMachine = new MowingMachine();
             initMowingMachine.MoveTo = Direction.North;
-            var mowingMachine = _turn90ClockwiseAction.Do(initMowingMachine);
+            var mowingMachine = await _turn90ClockwiseAction.Do(initMowingMachine);
             Assert.Equal(Direction.East,mowingMachine.MoveTo);
         }
 
         [Fact]
-        public void MowingMachineLogic_Rotate_ShouldRoteTheMachineClockwise90FromWestToNorth()
+        public async Task MowingMachineLogic_Rotate_ShouldRoteTheMachineClockwise90FromWestToNorth()
         {
             var initMowingMachine = new MowingMachine();
             initMowingMachine.MoveTo = Direction.West;
-            var mowingMachine = _turn90ClockwiseAction.Do(initMowingMachine);
+            var mowingMachine = await _turn90ClockwiseAction.Do(initMowingMachine);
             Assert.Equal(Direction.North, mowingMachine.MoveTo);
         }
     }

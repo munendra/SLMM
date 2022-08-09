@@ -1,6 +1,6 @@
 ﻿using ParcelVision.SLMM.Constants;
-
 using ParcelVision.SLMM.Model;
+using System.Threading.Tasks;
 
 namespace ParcelVision.SLMM.Logic
 {
@@ -8,7 +8,7 @@ namespace ParcelVision.SLMM.Logic
     {
         public Actions Actions => Actions.MoveOneStepForward;
 
-        public bool IsActionValid(MowingMachine mowingMachine, Lawn lawn)
+        public Task<bool> IsActionValid(MowingMachine mowingMachine, Lawn lawn)
         {
             var position = Movement.Position[mowingMachine.MoveTo];
             int x = mowingMachine.Position.X + position.X;
@@ -21,9 +21,9 @@ namespace ParcelVision.SLMM.Logic
             }
             if (x <= lawnOrientation.X && y <= lawnOrientation.Y)
             {
-                return true;
+                return Task.Run(() => true);
             }
-            return false;
+            return Task.Run(() => false);
         }
     }
 }

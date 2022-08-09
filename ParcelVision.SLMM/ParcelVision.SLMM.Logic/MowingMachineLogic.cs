@@ -3,6 +3,7 @@ using ParcelVision.SLMM.Constants;
 using ParcelVision.SLMM.Model;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace ParcelVision.SLMM.Logic
 {
@@ -16,7 +17,7 @@ namespace ParcelVision.SLMM.Logic
             _actionValidator = actionValidator;
         }
 
-        public MowingMachine Operates(Actions userAction, MowingMachine mowingMachine)
+        public async Task<MowingMachine> Operates(Actions userAction, MowingMachine mowingMachine)
         {
             var actions = _action;
             var action = actions.FirstOrDefault(a => a.Actions == userAction);
@@ -24,16 +25,16 @@ namespace ParcelVision.SLMM.Logic
             {
                 throw new System.Exception("Invalid actions");
             }
-            return action.Do(mowingMachine);
+            return await action.Do(mowingMachine);
         }
 
-        public bool Validation(Actions userAction, MowingMachine mowingMachine,Lawn lawn)
+        public async Task<bool> Validation(Actions userAction, MowingMachine mowingMachine, Lawn lawn)
         {
             var actionValidators = _actionValidator;
             var actionValidator = actionValidators.FirstOrDefault(a => a.Actions == userAction);
             if (actionValidator != null)
             {
-                return actionValidator.IsActionValid(mowingMachine, lawn);
+                return await actionValidator.IsActionValid(mowingMachine, lawn);
             }
             return true;
         }

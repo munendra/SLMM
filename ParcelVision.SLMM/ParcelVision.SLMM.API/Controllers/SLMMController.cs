@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ParcelVision.SLMM.Dtos;
 using ParcelVision.SLMM.Service;
+using System.Threading.Tasks;
 
 namespace ParcelVision.SLMM.API.Controllers
 {
@@ -16,9 +17,9 @@ namespace ParcelVision.SLMM.API.Controllers
 
         [HttpPost]
         [Route("lawntask")]
-        public IActionResult LawnTask(LawnRequestDto lawnRequest)
+        public async Task<IActionResult> LawnTask(LawnRequestDto lawnRequest)
         {
-            var updatedMowerMaching = _lawnService.Task(lawnRequest);
+            var updatedMowerMaching = await _lawnService.Task(lawnRequest);
             return Ok(updatedMowerMaching);
         }
 
